@@ -17,7 +17,20 @@ const getByTitleOrDirector = (request, response) => {
 }
 
 const createNew = (request, response) => {
+  const {
+    title, directors, releaseDate, rating, runTime, genres
+  } = request.body
 
+  if (!title, !directors, !releaseDate, !rating, !runTime, !genres) {
+return response.status(404).send('The following fields are required: title, directors, releaseDate, rating, runTime, genres')
+  }
+  const newMovie = {
+    title, directors, releaseDate, rating, runTime, genres
+  }
+
+  movies.push(newMovie)
+
+  return response.status(201).send(newMovie)
 }
 
 module.exports = {
